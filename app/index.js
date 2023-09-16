@@ -9,6 +9,7 @@ import { fileURLToPath } from "url";
 // import fs from "fs";
 // import https from "https";
 import { connect, disconnect } from "mongoose";
+import { Users } from "./schema.js";
 import * as dotenv from "dotenv";
 dotenv.config();
 
@@ -47,7 +48,24 @@ app.use(
 		res.setHeader("Content-Type", "text/html");
 		res.status(200).sendFile(path.join(__dirname, "/index.html"));
 	});
-	app.post("/register", Register);
+	app.post("/register", async (req, res) => {
+		const exisitingUser = await Users.find({ email: req.body.email });
+
+		if (typeof exisitingUser === "object" && !isEmpty(exisitingUser))
+			return res.status(400).json({
+				message:
+					"Registration was not successful. The issue is with the details you sent to us.",
+			});
+		const newUser = new Users({
+			email: req.body?.email,
+			password: req.body?.password,
+		});
+		await newUser.save();
+		res.setHeader("Content-Type", "application/json");
+		res.status(200).json({
+			message: "You have successfully registered with " + req.body.email,
+		});
+	});
 
 	// app.use("/", router);
 
@@ -60,3 +78,15 @@ app.use(
 		process.exit(0);
 	});
 })();
+
+/**
+ *
+ * @param obj
+ * @returns {boolean}
+ */
+export function isEmpty(obj) {
+	for (var x in obj) {
+		return false;
+	}
+	return true;
+}
