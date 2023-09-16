@@ -1,0 +1,26 @@
+{
+	"name": "tiguu-node",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app/index.js",
+	"scripts": {
+		"start": "node app/index.js",
+		"dev": "nodemon app/index.js",
+		"format": "prettier --write .",
+		"env": "cp .env.example .env",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"cookie-parser": "^1.4.6",
+		"cors": "^2.8.5",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"mongoose": "^7.5.2"
+	},
+	"devDependencies": {
+		"nodemon": "^3.0.1"
+	},
+	"type": "module"
+}
