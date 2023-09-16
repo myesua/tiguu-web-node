@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tiguu</title>
+		<style>
+			body {
+				display: grid;
+				place-items: center;
+				height: 100vh;
+			}
+			pre {
+				margin-left: -40px;
+			}
+			form {
+				width: 20rem;
+			}
+			fieldset {
+				display: grid;
+				gap: 5px;
+				border: none;
+			}
+			/* *:focus {
+				outline: none;
+			} */
+			input {
+				padding: 7px;
+				border-radius: 5px;
+				outline: none;
+				border: 1px solid grey;
+				width: 90%;
+				margin: 0 auto;
+			}
+			input:focus {
+				outline: 1px solid grey;
+				border-radius: 5px;
+			}
+			button {
+				border: none;
+				outline: none;
+				border-radius: 5px;
+				width: 50%;
+				margin: 0 auto;
+				padding: 7px 0;
+				cursor: pointer;
+			}
+			button:hover {
+				background-color: rgb(245, 244, 244);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<pre>
+            _____ _                   
+            |_   _(_) __ _ _   _ _   _ 
+              | | | |/ _` | | | | | | |
+              | | | | (_| | |_| | |_| |
+              |_| |_|\__, |\__,_|\__,_|
+                     |___/  
+        </pre>
+			</header>
+			<form
+				method="post"
+				action="http://localhost:3004/register"
+				aria-label="registration-form">
+				<fieldset>
+					<input
+						type="email"
+						name="email"
+						placeholder="Email"
+						required
+						aria-label="email" />
+					<input
+						type="password"
+						name="password"
+						placeholder="Password"
+						required
+						aria-label="password" />
+					<button type="submit" aria-label="submit-button">Register</button>
+				</fieldset>
+			</form>
+		</div>
+	</body>
+</html>
